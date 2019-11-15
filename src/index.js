@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
 })
 
 app.use(cors())
-app.use( multer({storage}).fields('images'))
+app.use( multer({storage}).any('images') )
 app.use( expres.json())
 app.use( expres.urlencoded({extended:false}))
 

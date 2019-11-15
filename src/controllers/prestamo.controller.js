@@ -3,7 +3,10 @@ const {getPrestamos} = require('../models/prestamos.model')
 
 ctrl.createPrestamo = async (req,res) => {
     try {
-        const {id_persona,tarjeta_debito,caducidad_tarjeta,constancia_trabajo,resibo_bancario,
+        console.log(req.files[0].filename);
+        console.log(req.files[1].filename);
+        console.log(req.file);
+        const {id_persona,tarjeta_debito,caducidad_tarjeta,
             prestamo,fecha_vencimiento,fecha_creacion_prestamo,estado} = req.body
 
         let interess =  parseInt(prestamo) * 0.12
@@ -15,8 +18,8 @@ ctrl.createPrestamo = async (req,res) => {
             id_persona,
             tarjeta_debito,
             caducidad_tarjeta,
-            constancia_trabajo,
-            resibo_bancario,
+            constancia_trabajo: await  req.files[0].filename,
+            resibo_bancario: await req.files[1].filename,
             prestamo,
             interes: interess,
             IVA_sobre_interes: iva_interes,
