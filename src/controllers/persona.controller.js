@@ -111,7 +111,7 @@ ctrl.login = async (req, res) => {
         }
 
         
-        if(!await compare1(password, user.password)) {
+        if(await compare1(password, user.password)) {
             return res.json({
                 ok:false,
                 message:'Email/Password incorrecto n',
@@ -125,7 +125,7 @@ ctrl.login = async (req, res) => {
         })
     
         res.json({
-            ok:false,
+            ok:true,
             message:'Todo bien',
             token1
         })
